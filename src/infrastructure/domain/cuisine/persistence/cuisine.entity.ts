@@ -3,8 +3,8 @@ import { FoodEntity } from '../../food/persistence/food.entity';
 
 @Entity('tbl_cuisine')
 export class CuisineEntity {
-    @PrimaryGeneratedColumn('uuid')
-    id: string;
+    @PrimaryGeneratedColumn()
+    id: number;
 
     @Column('varchar', { nullable: false, length: 15 })
     name: string;

@@ -3,8 +3,8 @@ import { KeywordEntity } from '../../keyword/persistence/keyword.entity';
 
 @Entity('tbl_food')
 export class FoodEntity {
-    @PrimaryGeneratedColumn('uuid')
-    id: string;
+    @PrimaryGeneratedColumn()
+    id: number;
 
     @Column('varchar', { nullable: false, length: 10 })
     name: string;
