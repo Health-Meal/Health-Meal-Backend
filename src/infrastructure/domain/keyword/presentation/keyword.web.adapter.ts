@@ -1,7 +1,7 @@
 import { Controller, Get, Query, UsePipes } from '@nestjs/common';
-import { QueryKeywordUseCase } from '../../../../application/domain/keyword/usecase/queryKeywordUseCase';
 import { QueryKeywordResponse } from '../../../../application/domain/keyword/dto/keyword.dto';
 import { ValidateKeywordPipe } from '../../../global/pipe/validate.keyword.pipe';
+import { QueryKeywordUseCase } from '../../../../application/domain/keyword/usecase/query-keyword.usecase';
 
 @Controller('keywords')
 export class KeywordWebAdapter {
