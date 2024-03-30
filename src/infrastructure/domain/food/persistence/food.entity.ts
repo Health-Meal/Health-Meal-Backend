@@ -1,4 +1,4 @@
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, RelationId } from 'typeorm';
 import { KeywordEntity } from '../../keyword/persistence/keyword.entity';
 
 @Entity('tbl_food')
@@ -18,4 +18,7 @@ export class FoodEntity {
     @ManyToOne(() => KeywordEntity)
     @JoinColumn({ name: 'keyword_id' })
     keyword: KeywordEntity;
+
+    @RelationId((food: FoodEntity) => food.keyword)
+    keywordId: number;
 }
