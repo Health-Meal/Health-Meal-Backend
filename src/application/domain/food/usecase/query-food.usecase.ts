@@ -14,7 +14,7 @@ export class QueryFoodUseCase {
         const food = await this.foodPort.queryFoodByKeywordId(keywordId);
 
         return {
-            id: food.id,
+            foodId: food.id,
             name: food.name,
             description: food.description,
             image: food.image

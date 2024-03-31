@@ -1,5 +1,5 @@
 export class QueryFoodResponse {
-    id: number
+    foodId: number
     name: string
     description: string
     image: string

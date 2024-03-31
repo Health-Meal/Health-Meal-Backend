@@ -16,7 +16,7 @@ export class QueryKeywordUseCase {
         return {
             keywords: keywords.map((keyword): KeywordResponse => {
                 return {
-                    id: keyword.id,
+                    keywordId: keyword.id,
                     name: keyword.name
                 };
             })

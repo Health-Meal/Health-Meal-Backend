@@ -3,6 +3,6 @@ export class QueryKeywordResponse {
 }
 
 export class KeywordResponse {
-    id: number;
+    keywordId: number;
     name: string;
 }
