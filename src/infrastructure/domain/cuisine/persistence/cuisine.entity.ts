@@ -1,4 +1,4 @@
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, RelationId } from 'typeorm';
 import { FoodEntity } from '../../food/persistence/food.entity';
 
 @Entity('tbl_cuisine')
@@ -11,5 +11,8 @@ export class CuisineEntity {
 
     @ManyToOne(() => FoodEntity)
     @JoinColumn({ name: 'food_id' })
-    food: string;
+    food: FoodEntity;
+
+    @RelationId((cuisine: CuisineEntity) => cuisine.food)
+    foodId: number
 }
