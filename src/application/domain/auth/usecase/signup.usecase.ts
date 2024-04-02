@@ -1,5 +1,5 @@
 import { ConflictException, Inject, Injectable } from '@nestjs/common';
-import { SignUpRequest } from '../../../../infrastructure/domain/user/presentation/dto/auth.web.dto';
+import { SignUpRequest } from '../../../../infrastructure/domain/auth/presentation/dto/auth.web.dto';
 import * as bcrypt from 'bcrypt';
 import { UserPort } from '../../user/spi/user.spi';
 import { User } from '../../user/domain/user';

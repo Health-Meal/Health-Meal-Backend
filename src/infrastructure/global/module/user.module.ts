@@ -5,7 +5,7 @@ import { UserPort } from '../../../application/domain/user/spi/user.spi';
 import { UserPersistenceAdapter } from '../../domain/user/persistence/user.persistence.adapter';
 import { UserMapper } from '../../domain/user/persistence/user.mapper';
 
-const USER_PORT = {provide: UserPort, useClass: UserPersistenceAdapter}
+const USER_PORT = { provide: UserPort, useClass: UserPersistenceAdapter };
 const USER_REPOSITORY = TypeOrmModule.forFeature([UserEntity]);
 
 @Global()
@@ -14,7 +14,7 @@ const USER_REPOSITORY = TypeOrmModule.forFeature([UserEntity]);
     controllers: [],
     providers: [
         USER_PORT,
-        UserMapper,
+        UserMapper
     ],
     exports: [USER_PORT, USER_REPOSITORY, UserMapper]
 })
