@@ -21,9 +21,10 @@ export class UserPersistenceAdapter implements UserPort {
         );
     }
 
-    async saveUser(user: User): Promise<void> {
-        await this.userRepository.insert(
-            this.userMapper.toEntity(user)
+    async saveUser(user: User): Promise<User> {
+        return this.userMapper.toDomain(
+            await this.userRepository.save(
+                this.userMapper.toEntity(user))
         );
     }
 }

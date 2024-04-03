@@ -18,6 +18,7 @@ export class UserMapper {
                 entity.email,
                 entity.password,
                 entity.name,
+                entity.loginType,
                 entity.id
             ) : null;
     }
@@ -27,7 +28,8 @@ export class UserMapper {
             domain.id,
             domain.email,
             domain.password,
-            domain.name
+            domain.name,
+            domain.loginType
         );
     }
 }

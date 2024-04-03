@@ -8,6 +8,8 @@ import { AuthWebAdapter } from '../../domain/auth/presentation/auth.web.adapter'
 import { JwtPort } from '../../../application/domain/auth/spi/auth.spi';
 import { JwtAdapter } from '../jwt/jwt.adapter';
 import { LoginUseCase } from '../../../application/domain/auth/usecase/login.usecase';
+import { GoogleStrategy } from '../oauth/google.strategy';
+import { GoogleLoginUseCase } from '../../../application/domain/auth/usecase/google-login.usecase';
 
 const JWT_PORT = {provide: JwtPort, useClass: JwtAdapter}
 
@@ -30,8 +32,10 @@ const JWT_PORT = {provide: JwtPort, useClass: JwtAdapter}
     controllers: [AuthWebAdapter],
     providers: [
         JWT_PORT,
+        GoogleStrategy,
         SignUpUseCase,
-        LoginUseCase
+        LoginUseCase,
+        GoogleLoginUseCase
     ],
     exports: []
 })

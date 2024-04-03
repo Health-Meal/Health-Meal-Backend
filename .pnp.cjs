@@ -42,6 +42,7 @@ const RAW_RUNTIME_STATE =
           ["@types/jest", "npm:29.5.12"],\
           ["@types/node", "npm:20.11.30"],\
           ["@types/passport", "npm:0.4.7"],\
+          ["@types/passport-google-oauth20", "npm:2.0.14"],\
           ["@types/passport-jwt", "npm:4.0.1"],\
           ["@types/supertest", "npm:6.0.2"],\
           ["@typescript-eslint/eslint-plugin", "virtual:3fe8463d972f93f2a0f0ec109b9a2c74809af7d7109edffe78709d451968c4fd8f06ca685fb7c49d888699ef63e4b875ed83e7bf662db26cf4cfd48a44beb37e#npm:6.21.0"],\
@@ -57,6 +58,7 @@ const RAW_RUNTIME_STATE =
           ["jest", "virtual:3fe8463d972f93f2a0f0ec109b9a2c74809af7d7109edffe78709d451968c4fd8f06ca685fb7c49d888699ef63e4b875ed83e7bf662db26cf4cfd48a44beb37e#npm:29.7.0"],\
           ["mysql2", "npm:3.9.2"],\
           ["passport", "npm:0.7.0"],\
+          ["passport-google-oauth20", "npm:2.0.0"],\
           ["passport-jwt", "npm:4.0.1"],\
           ["prettier", "npm:3.2.5"],\
           ["redis", "npm:4.6.13"],\
@@ -2405,6 +2407,16 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["@types/oauth", [\
+      ["npm:0.9.4", {\
+        "packageLocation": "../../../.yarn/berry/cache/@types-oauth-npm-0.9.4-b4020aaf3f-10c0.zip/node_modules/@types/oauth/",\
+        "packageDependencies": [\
+          ["@types/oauth", "npm:0.9.4"],\
+          ["@types/node", "npm:20.11.30"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["@types/passport", [\
       ["npm:0.4.7", {\
         "packageLocation": "../../../.yarn/berry/cache/@types-passport-npm-0.4.7-41ee4f6974-10c0.zip/node_modules/@types/passport/",\
@@ -2423,6 +2435,18 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["@types/passport-google-oauth20", [\
+      ["npm:2.0.14", {\
+        "packageLocation": "../../../.yarn/berry/cache/@types-passport-google-oauth20-npm-2.0.14-04b5e08321-10c0.zip/node_modules/@types/passport-google-oauth20/",\
+        "packageDependencies": [\
+          ["@types/passport-google-oauth20", "npm:2.0.14"],\
+          ["@types/express", "npm:4.17.21"],\
+          ["@types/passport", "npm:1.0.16"],\
+          ["@types/passport-oauth2", "npm:1.4.15"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["@types/passport-jwt", [\
       ["npm:4.0.1", {\
         "packageLocation": "../../../.yarn/berry/cache/@types-passport-jwt-npm-4.0.1-521dae8c91-10c0.zip/node_modules/@types/passport-jwt/",\
@@ -2430,6 +2454,18 @@ const RAW_RUNTIME_STATE =
           ["@types/passport-jwt", "npm:4.0.1"],\
           ["@types/jsonwebtoken", "npm:9.0.6"],\
           ["@types/passport-strategy", "npm:0.2.38"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@types/passport-oauth2", [\
+      ["npm:1.4.15", {\
+        "packageLocation": "../../../.yarn/berry/cache/@types-passport-oauth2-npm-1.4.15-0080e2bf19-10c0.zip/node_modules/@types/passport-oauth2/",\
+        "packageDependencies": [\
+          ["@types/passport-oauth2", "npm:1.4.15"],\
+          ["@types/express", "npm:4.17.21"],\
+          ["@types/oauth", "npm:0.9.4"],\
+          ["@types/passport", "npm:1.0.16"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -2987,6 +3023,7 @@ const RAW_RUNTIME_STATE =
           ["@types/jest", "npm:29.5.12"],\
           ["@types/node", "npm:20.11.30"],\
           ["@types/passport", "npm:0.4.7"],\
+          ["@types/passport-google-oauth20", "npm:2.0.14"],\
           ["@types/passport-jwt", "npm:4.0.1"],\
           ["@types/supertest", "npm:6.0.2"],\
           ["@typescript-eslint/eslint-plugin", "virtual:3fe8463d972f93f2a0f0ec109b9a2c74809af7d7109edffe78709d451968c4fd8f06ca685fb7c49d888699ef63e4b875ed83e7bf662db26cf4cfd48a44beb37e#npm:6.21.0"],\
@@ -3002,6 +3039,7 @@ const RAW_RUNTIME_STATE =
           ["jest", "virtual:3fe8463d972f93f2a0f0ec109b9a2c74809af7d7109edffe78709d451968c4fd8f06ca685fb7c49d888699ef63e4b875ed83e7bf662db26cf4cfd48a44beb37e#npm:29.7.0"],\
           ["mysql2", "npm:3.9.2"],\
           ["passport", "npm:0.7.0"],\
+          ["passport-google-oauth20", "npm:2.0.0"],\
           ["passport-jwt", "npm:4.0.1"],\
           ["prettier", "npm:3.2.5"],\
           ["redis", "npm:4.6.13"],\
@@ -3553,6 +3591,15 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../../.yarn/berry/cache/base64-js-npm-1.5.1-b2f7275641-10c0.zip/node_modules/base64-js/",\
         "packageDependencies": [\
           ["base64-js", "npm:1.5.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["base64url", [\
+      ["npm:3.0.1", {\
+        "packageLocation": "../../../.yarn/berry/cache/base64url-npm-3.0.1-4c171c4917-10c0.zip/node_modules/base64url/",\
+        "packageDependencies": [\
+          ["base64url", "npm:3.0.1"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -7778,6 +7825,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["oauth", [\
+      ["npm:0.10.0", {\
+        "packageLocation": "../../../.yarn/berry/cache/oauth-npm-0.10.0-74adff7683-10c0.zip/node_modules/oauth/",\
+        "packageDependencies": [\
+          ["oauth", "npm:0.10.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["object-assign", [\
       ["npm:4.1.1", {\
         "packageLocation": "../../../.yarn/berry/cache/object-assign-npm-4.1.1-1004ad6dec-10c0.zip/node_modules/object-assign/",\
@@ -7993,6 +8049,16 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["passport-google-oauth20", [\
+      ["npm:2.0.0", {\
+        "packageLocation": "../../../.yarn/berry/cache/passport-google-oauth20-npm-2.0.0-4187da29c8-10c0.zip/node_modules/passport-google-oauth20/",\
+        "packageDependencies": [\
+          ["passport-google-oauth20", "npm:2.0.0"],\
+          ["passport-oauth2", "npm:1.8.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["passport-jwt", [\
       ["npm:4.0.1", {\
         "packageLocation": "../../../.yarn/berry/cache/passport-jwt-npm-4.0.1-2841eea09e-10c0.zip/node_modules/passport-jwt/",\
@@ -8000,6 +8066,20 @@ const RAW_RUNTIME_STATE =
           ["passport-jwt", "npm:4.0.1"],\
           ["jsonwebtoken", "npm:9.0.2"],\
           ["passport-strategy", "npm:1.0.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["passport-oauth2", [\
+      ["npm:1.8.0", {\
+        "packageLocation": "../../../.yarn/berry/cache/passport-oauth2-npm-1.8.0-bb6d58d7d4-10c0.zip/node_modules/passport-oauth2/",\
+        "packageDependencies": [\
+          ["passport-oauth2", "npm:1.8.0"],\
+          ["base64url", "npm:3.0.1"],\
+          ["oauth", "npm:0.10.0"],\
+          ["passport-strategy", "npm:1.0.0"],\
+          ["uid2", "npm:0.0.4"],\
+          ["utils-merge", "npm:1.0.1"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -9694,6 +9774,15 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["uid", "npm:2.0.2"],\
           ["@lukeed/csprng", "npm:1.1.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["uid2", [\
+      ["npm:0.0.4", {\
+        "packageLocation": "../../../.yarn/berry/cache/uid2-npm-0.0.4-cd02831b83-10c0.zip/node_modules/uid2/",\
+        "packageDependencies": [\
+          ["uid2", "npm:0.0.4"]\
         ],\
         "linkType": "HARD"\
       }]\

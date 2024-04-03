@@ -26,7 +26,8 @@ export class SignUpUseCase {
             new User(
                 request.email,
                 hashPassword,
-                request.name
+                request.name,
+                'local'
             )
         );
     }

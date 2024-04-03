@@ -1,4 +1,4 @@
-import { Inject, Injectable, NotFoundException, UnauthorizedException } from '@nestjs/common';
+import { BadRequestException, Inject, Injectable, NotFoundException, UnauthorizedException } from '@nestjs/common';
 import { UserPort } from '../../user/spi/user.spi';
 import { JwtPort } from '../spi/auth.spi';
 import * as bcrypt from 'bcrypt';
@@ -20,6 +20,10 @@ export class LoginUseCase {
 
         if (!user) {
             throw new NotFoundException('User Not Found');
+        }
+
+        if (user.loginType !== 'local') {
+            throw new BadRequestException(`${user.loginType} login`);
         }
 
         if (!await bcrypt.compare(request.password, user.password)) {
