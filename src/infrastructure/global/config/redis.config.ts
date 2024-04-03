@@ -3,6 +3,7 @@ import { CacheModule } from '@nestjs/cache-manager';
 import { RedisClientOptions } from 'redis';
 import { ConfigService } from '@nestjs/config';
 import { redisStore } from 'cache-manager-redis-yet';
+import { RefreshTokenRepository } from '../../domain/auth/persistence/repository/refresh-token.repository';
 
 @Module({
     imports: [
@@ -19,8 +20,8 @@ import { redisStore } from 'cache-manager-redis-yet';
             })
         })
     ],
-    providers: [],
-    exports: []
+    providers: [RefreshTokenRepository],
+    exports: [RefreshTokenRepository]
 })
 export class RedisCacheModule {
 }

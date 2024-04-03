@@ -5,6 +5,11 @@ import { ConfigService } from '@nestjs/config';
 import { PassportModule } from '@nestjs/passport';
 import { SignUpUseCase } from '../../../application/domain/auth/usecase/signup.usecase';
 import { AuthWebAdapter } from '../../domain/auth/presentation/auth.web.adapter';
+import { JwtPort } from '../../../application/domain/auth/spi/auth.spi';
+import { JwtAdapter } from '../jwt/jwt.adapter';
+import { LoginUseCase } from '../../../application/domain/auth/usecase/login.usecase';
+
+const JWT_PORT = {provide: JwtPort, useClass: JwtAdapter}
 
 @Module({
     imports: [
@@ -24,7 +29,9 @@ import { AuthWebAdapter } from '../../domain/auth/presentation/auth.web.adapter'
     ],
     controllers: [AuthWebAdapter],
     providers: [
-        SignUpUseCase
+        JWT_PORT,
+        SignUpUseCase,
+        LoginUseCase
     ],
     exports: []
 })
