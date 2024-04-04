@@ -15,4 +15,8 @@ export class RefreshTokenRepository {
     async save(refreshToken: RefreshTokenEntity) {
         await this.cacheManager.set(refreshToken.username, refreshToken.refreshToken, this.configService.get('REFRESH_EXP'));
     }
+
+    async get(key: string): Promise<string> {
+        return await this.cacheManager.get(key);
+    }
 }

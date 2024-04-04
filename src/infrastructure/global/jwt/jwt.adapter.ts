@@ -3,12 +3,14 @@ import { JwtService } from '@nestjs/jwt';
 import { TokenResponse } from '../../../application/domain/auth/dto/auth.dto';
 import { JwtPort } from '../../../application/domain/auth/spi/auth.spi';
 import { RefreshTokenRepository } from '../../domain/auth/persistence/repository/refresh-token.repository';
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class JwtAdapter implements JwtPort {
     constructor(
         private readonly jwtService: JwtService,
-        private readonly refreshTokenRepository: RefreshTokenRepository
+        private readonly refreshTokenRepository: RefreshTokenRepository,
+        private readonly config: ConfigService
     ) {
     }
 
@@ -32,5 +34,11 @@ export class JwtAdapter implements JwtPort {
             { sub: username, type },
             { expiresIn: exp }
         );
+    }
+
+    async getSubject(token: string): Promise<string> {
+        const payload = await this.jwtService.verifyAsync(token,
+            { secret: this.config.get<string>('JWT_SECRET') });
+        return payload.sub;
     }
 }

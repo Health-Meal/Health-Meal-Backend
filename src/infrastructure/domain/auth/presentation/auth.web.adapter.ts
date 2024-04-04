@@ -1,17 +1,19 @@
-import { Body, Controller, Get, Post, Request, UseGuards, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Get, Headers, Post, Request, UseGuards, UsePipes, ValidationPipe } from '@nestjs/common';
 import { SignUpUseCase } from '../../../../application/domain/auth/usecase/signup.usecase';
 import { LoginRequest, SignUpRequest } from './dto/auth.web.dto';
 import { TokenResponse } from '../../../../application/domain/auth/dto/auth.dto';
 import { LoginUseCase } from '../../../../application/domain/auth/usecase/login.usecase';
 import { AuthGuard } from '@nestjs/passport';
 import { GoogleLoginUseCase } from '../../../../application/domain/auth/usecase/google-login.usecase';
+import { TokenReissueUseCase } from '../../../../application/domain/auth/usecase/token-reissue.usecase';
 
 @Controller('auth')
 export class AuthWebAdapter {
     constructor(
         private readonly signUpUseCase: SignUpUseCase,
         private readonly loginUseCase: LoginUseCase,
-        private readonly googleLoginUseCase: GoogleLoginUseCase
+        private readonly googleLoginUseCase: GoogleLoginUseCase,
+        private readonly tokenReissueUseCase: TokenReissueUseCase
     ) {
     }
 
@@ -36,5 +38,10 @@ export class AuthWebAdapter {
     @UseGuards(AuthGuard('google'))
     async googleAuthRedirect(@Request() req): Promise<TokenResponse> {
         return this.googleLoginUseCase.execute(req);
+    }
+
+    @Post('reissue')
+    async reissueToken(@Headers('Refresh-Token') refreshToken: string): Promise<TokenResponse> {
+        return this.tokenReissueUseCase.execute(refreshToken);
     }
 }

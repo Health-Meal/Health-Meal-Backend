@@ -5,13 +5,16 @@ import { ConfigService } from '@nestjs/config';
 import { PassportModule } from '@nestjs/passport';
 import { SignUpUseCase } from '../../../application/domain/auth/usecase/signup.usecase';
 import { AuthWebAdapter } from '../../domain/auth/presentation/auth.web.adapter';
-import { JwtPort } from '../../../application/domain/auth/spi/auth.spi';
+import { JwtPort, RefreshTokenPort } from '../../../application/domain/auth/spi/auth.spi';
 import { JwtAdapter } from '../jwt/jwt.adapter';
 import { LoginUseCase } from '../../../application/domain/auth/usecase/login.usecase';
 import { GoogleStrategy } from '../oauth/google.strategy';
 import { GoogleLoginUseCase } from '../../../application/domain/auth/usecase/google-login.usecase';
+import { RefreshTokenPersistenceAdapter } from '../../domain/auth/persistence/refresh-token.persistence.adapter';
+import { TokenReissueUseCase } from '../../../application/domain/auth/usecase/token-reissue.usecase';
 
 const JWT_PORT = {provide: JwtPort, useClass: JwtAdapter}
+const REFRESH_TOKEN_PORT = {provide: RefreshTokenPort, useClass: RefreshTokenPersistenceAdapter}
 
 @Module({
     imports: [
@@ -32,10 +35,12 @@ const JWT_PORT = {provide: JwtPort, useClass: JwtAdapter}
     controllers: [AuthWebAdapter],
     providers: [
         JWT_PORT,
+        REFRESH_TOKEN_PORT,
         GoogleStrategy,
         SignUpUseCase,
         LoginUseCase,
-        GoogleLoginUseCase
+        GoogleLoginUseCase,
+        TokenReissueUseCase
     ],
     exports: []
 })
