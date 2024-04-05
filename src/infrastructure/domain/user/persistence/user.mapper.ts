@@ -23,7 +23,7 @@ export class UserMapper {
             ) : null;
     }
 
-    toEntity(domain: User): UserEntity {
+    async toEntity(domain: User): Promise<UserEntity> {
         return new UserEntity(
             domain.id,
             domain.email,
