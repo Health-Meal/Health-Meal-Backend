@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Global, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { FoodEntity } from '../../domain/food/persistence/food.entity';
 import { FoodPort } from '../../../application/domain/food/spi/food.spi';
@@ -10,6 +10,7 @@ import { FoodWebAdapter } from '../../domain/food/presentation/food.web.adapter'
 const FOOD_PORT = { provide: FoodPort, useClass: FoodPersistenceAdapter };
 const FOOD_REPOSITORY = TypeOrmModule.forFeature([FoodEntity]);
 
+@Global()
 @Module({
     imports: [FOOD_REPOSITORY],
     controllers: [FoodWebAdapter],
@@ -18,7 +19,7 @@ const FOOD_REPOSITORY = TypeOrmModule.forFeature([FoodEntity]);
         FoodMapper,
         QueryFoodUseCase
     ],
-    exports: [FOOD_REPOSITORY]
+    exports: [FOOD_REPOSITORY, FOOD_PORT]
 })
 export class FoodModule {
 }

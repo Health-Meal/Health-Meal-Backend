@@ -14,4 +14,10 @@ export class BookmarkEntity {
     @ManyToOne(() => FoodEntity)
     @JoinColumn({ name: 'food_id' })
     food: FoodEntity;
+
+    constructor(id: number, user: UserEntity, food: FoodEntity) {
+        this.id = id;
+        this.user = user;
+        this.food = food;
+    }
 }

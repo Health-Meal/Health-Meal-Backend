@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Global, Module } from '@nestjs/common';
 import { RedisCacheModule } from '../config/redis.config';
 import { JwtModule } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
@@ -12,10 +12,12 @@ import { GoogleStrategy } from '../oauth/google.strategy';
 import { GoogleLoginUseCase } from '../../../application/domain/auth/usecase/google-login.usecase';
 import { RefreshTokenPersistenceAdapter } from '../../domain/auth/persistence/refresh-token.persistence.adapter';
 import { TokenReissueUseCase } from '../../../application/domain/auth/usecase/token-reissue.usecase';
+import { JwtStrategy } from '../jwt/jwt.strategy';
 
 const JWT_PORT = {provide: JwtPort, useClass: JwtAdapter}
 const REFRESH_TOKEN_PORT = {provide: RefreshTokenPort, useClass: RefreshTokenPersistenceAdapter}
 
+@Global()
 @Module({
     imports: [
         RedisCacheModule,
@@ -36,13 +38,14 @@ const REFRESH_TOKEN_PORT = {provide: RefreshTokenPort, useClass: RefreshTokenPer
     providers: [
         JWT_PORT,
         REFRESH_TOKEN_PORT,
+        JwtStrategy,
         GoogleStrategy,
         SignUpUseCase,
         LoginUseCase,
         GoogleLoginUseCase,
         TokenReissueUseCase
     ],
-    exports: []
+    exports: [JwtStrategy, PassportModule]
 })
 export class AuthModule {
 }
