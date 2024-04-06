@@ -1,7 +1,6 @@
 import { Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, RelationId } from 'typeorm';
 import { UserEntity } from '../../user/persistence/user.entity';
 import { FoodEntity } from '../../food/persistence/food.entity';
-import { Bookmark } from '../../../../application/domain/bookmark/domain/bookmark';
 
 @Entity('tbl_bookmark')
 export class BookmarkEntity {
