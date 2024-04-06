@@ -20,4 +20,8 @@ export class BookmarkPersistenceAdapter implements BookmarkPort {
             await this.bookmarkMapper.toEntity(bookmark)
         );
     }
+
+    async deleteBookmark(bookmarkId: number) {
+        await this.bookmarkRepository.delete({ id: bookmarkId });
+    }
 }
