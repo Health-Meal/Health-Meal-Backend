@@ -19,8 +19,8 @@ export class BookmarkMapper {
     async toDomain(entity: BookmarkEntity): Promise<Bookmark> {
         return entity
             ? new Bookmark(
-                entity.user.id,
-                entity.food.id,
+                entity.userId,
+                entity.foodId,
                 entity.id
             ) : null;
     }

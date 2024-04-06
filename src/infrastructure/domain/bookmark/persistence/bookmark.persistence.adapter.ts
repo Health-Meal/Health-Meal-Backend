@@ -24,4 +24,14 @@ export class BookmarkPersistenceAdapter implements BookmarkPort {
     async deleteBookmark(bookmarkId: number) {
         await this.bookmarkRepository.delete({ id: bookmarkId });
     }
+
+    async queryBookmarkByUserIdAndFoodId(userId: number, foodId: number): Promise<Bookmark> {
+        const bookmarkEntity = await this.bookmarkRepository
+            .createQueryBuilder('bookmark')
+            .where('bookmark.user_id = :user_id', { user_id: userId })
+            .andWhere('bookmark.food_id = :food_id', { food_id: foodId })
+            .getOne();
+
+        return await this.bookmarkMapper.toDomain(bookmarkEntity);
+    }
 }
