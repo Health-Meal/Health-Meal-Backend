@@ -5,6 +5,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { BookmarkEntity } from './bookmark.entity';
 import { Repository } from 'typeorm';
 import { BookmarkMapper } from './bookmark.mapper';
+import { BookMarkListResponse } from '../../../../application/domain/bookmark/dto/bookmark.dto';
 
 @Injectable()
 export class BookmarkPersistenceAdapter implements BookmarkPort {
@@ -33,5 +34,21 @@ export class BookmarkPersistenceAdapter implements BookmarkPort {
             .getOne();
 
         return await this.bookmarkMapper.toDomain(bookmarkEntity);
+    }
+
+    async queryBookmarkByUserId(userId: number): Promise<BookMarkListResponse[]> {
+        const bookmarkEntityList = await this.bookmarkRepository
+            .createQueryBuilder('bookmark')
+            .innerJoinAndSelect('bookmark.food', 'food')
+            .where('bookmark.user_id = :user_id', { user_id: userId })
+            .getMany();
+
+        return bookmarkEntityList.map((bookmarkEntity) => ({
+            bookmarkId: bookmarkEntity.id,
+            foodId: bookmarkEntity.foodId,
+            food: bookmarkEntity.food.name,
+            description: bookmarkEntity.food.description,
+            image: bookmarkEntity.food.image
+        }))
     }
 }

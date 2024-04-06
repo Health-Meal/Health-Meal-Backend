@@ -3,5 +3,9 @@ export class QueryBookmarkListResponse {
 }
 
 export class BookMarkListResponse {
-
+    bookmarkId: number
+    foodId: number
+    food: string
+    description: string
+    image: string
 }

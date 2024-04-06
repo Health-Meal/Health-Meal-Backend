@@ -7,6 +7,7 @@ import { SaveBookmarkUseCase } from '../../../application/domain/bookmark/usecas
 import { BookmarkMapper } from '../../domain/bookmark/persistence/bookmark.mapper';
 import { BookmarkWebAdapter } from '../../domain/bookmark/presentation/bookmark.web.adapter';
 import { DeleteBookmarkUseCase } from '../../../application/domain/bookmark/usecase/delete-bookmark.usecase';
+import { QueryBookmarksUseCase } from '../../../application/domain/bookmark/usecase/query-bookmarks.usecase';
 
 const BOOKMARK_PORT = { provide: BookmarkPort, useClass: BookmarkPersistenceAdapter };
 const BOOKMARK_REPOSITORY = TypeOrmModule.forFeature([BookmarkEntity]);
@@ -18,7 +19,8 @@ const BOOKMARK_REPOSITORY = TypeOrmModule.forFeature([BookmarkEntity]);
         BOOKMARK_PORT,
         BookmarkMapper,
         SaveBookmarkUseCase,
-        DeleteBookmarkUseCase
+        DeleteBookmarkUseCase,
+        QueryBookmarksUseCase
     ],
     exports: [BOOKMARK_REPOSITORY]
 })
