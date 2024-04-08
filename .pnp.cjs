@@ -35,7 +35,7 @@ const RAW_RUNTIME_STATE =
           ["@nestjs/passport", "virtual:3fe8463d972f93f2a0f0ec109b9a2c74809af7d7109edffe78709d451968c4fd8f06ca685fb7c49d888699ef63e4b875ed83e7bf662db26cf4cfd48a44beb37e#npm:10.0.3"],\
           ["@nestjs/platform-express", "virtual:3fe8463d972f93f2a0f0ec109b9a2c74809af7d7109edffe78709d451968c4fd8f06ca685fb7c49d888699ef63e4b875ed83e7bf662db26cf4cfd48a44beb37e#npm:10.3.5"],\
           ["@nestjs/schematics", "virtual:3fe8463d972f93f2a0f0ec109b9a2c74809af7d7109edffe78709d451968c4fd8f06ca685fb7c49d888699ef63e4b875ed83e7bf662db26cf4cfd48a44beb37e#npm:10.1.1"],\
-          ["@nestjs/testing", "virtual:3fe8463d972f93f2a0f0ec109b9a2c74809af7d7109edffe78709d451968c4fd8f06ca685fb7c49d888699ef63e4b875ed83e7bf662db26cf4cfd48a44beb37e#npm:10.3.5"],\
+          ["@nestjs/testing", "virtual:3fe8463d972f93f2a0f0ec109b9a2c74809af7d7109edffe78709d451968c4fd8f06ca685fb7c49d888699ef63e4b875ed83e7bf662db26cf4cfd48a44beb37e#npm:10.3.7"],\
           ["@nestjs/typeorm", "virtual:3fe8463d972f93f2a0f0ec109b9a2c74809af7d7109edffe78709d451968c4fd8f06ca685fb7c49d888699ef63e4b875ed83e7bf662db26cf4cfd48a44beb37e#npm:10.0.2"],\
           ["@types/bcrypt", "npm:5.0.2"],\
           ["@types/express", "npm:4.17.21"],\
@@ -1790,17 +1790,17 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["@nestjs/testing", [\
-      ["npm:10.3.5", {\
-        "packageLocation": "../../../.yarn/berry/cache/@nestjs-testing-npm-10.3.5-abe83bbb81-10c0.zip/node_modules/@nestjs/testing/",\
+      ["npm:10.3.7", {\
+        "packageLocation": "../../../.yarn/berry/cache/@nestjs-testing-npm-10.3.7-a75df52ad1-10c0.zip/node_modules/@nestjs/testing/",\
         "packageDependencies": [\
-          ["@nestjs/testing", "npm:10.3.5"]\
+          ["@nestjs/testing", "npm:10.3.7"]\
         ],\
         "linkType": "SOFT"\
       }],\
-      ["virtual:3fe8463d972f93f2a0f0ec109b9a2c74809af7d7109edffe78709d451968c4fd8f06ca685fb7c49d888699ef63e4b875ed83e7bf662db26cf4cfd48a44beb37e#npm:10.3.5", {\
-        "packageLocation": "./.yarn/__virtual__/@nestjs-testing-virtual-95008c6f5f/4/.yarn/berry/cache/@nestjs-testing-npm-10.3.5-abe83bbb81-10c0.zip/node_modules/@nestjs/testing/",\
+      ["virtual:3fe8463d972f93f2a0f0ec109b9a2c74809af7d7109edffe78709d451968c4fd8f06ca685fb7c49d888699ef63e4b875ed83e7bf662db26cf4cfd48a44beb37e#npm:10.3.7", {\
+        "packageLocation": "./.yarn/__virtual__/@nestjs-testing-virtual-22f2179820/4/.yarn/berry/cache/@nestjs-testing-npm-10.3.7-a75df52ad1-10c0.zip/node_modules/@nestjs/testing/",\
         "packageDependencies": [\
-          ["@nestjs/testing", "virtual:3fe8463d972f93f2a0f0ec109b9a2c74809af7d7109edffe78709d451968c4fd8f06ca685fb7c49d888699ef63e4b875ed83e7bf662db26cf4cfd48a44beb37e#npm:10.3.5"],\
+          ["@nestjs/testing", "virtual:3fe8463d972f93f2a0f0ec109b9a2c74809af7d7109edffe78709d451968c4fd8f06ca685fb7c49d888699ef63e4b875ed83e7bf662db26cf4cfd48a44beb37e#npm:10.3.7"],\
           ["@nestjs/common", "virtual:3fe8463d972f93f2a0f0ec109b9a2c74809af7d7109edffe78709d451968c4fd8f06ca685fb7c49d888699ef63e4b875ed83e7bf662db26cf4cfd48a44beb37e#npm:10.3.5"],\
           ["@nestjs/core", "virtual:3fe8463d972f93f2a0f0ec109b9a2c74809af7d7109edffe78709d451968c4fd8f06ca685fb7c49d888699ef63e4b875ed83e7bf662db26cf4cfd48a44beb37e#npm:10.3.5"],\
           ["@nestjs/microservices", null],\
@@ -3016,7 +3016,7 @@ const RAW_RUNTIME_STATE =
           ["@nestjs/passport", "virtual:3fe8463d972f93f2a0f0ec109b9a2c74809af7d7109edffe78709d451968c4fd8f06ca685fb7c49d888699ef63e4b875ed83e7bf662db26cf4cfd48a44beb37e#npm:10.0.3"],\
           ["@nestjs/platform-express", "virtual:3fe8463d972f93f2a0f0ec109b9a2c74809af7d7109edffe78709d451968c4fd8f06ca685fb7c49d888699ef63e4b875ed83e7bf662db26cf4cfd48a44beb37e#npm:10.3.5"],\
           ["@nestjs/schematics", "virtual:3fe8463d972f93f2a0f0ec109b9a2c74809af7d7109edffe78709d451968c4fd8f06ca685fb7c49d888699ef63e4b875ed83e7bf662db26cf4cfd48a44beb37e#npm:10.1.1"],\
-          ["@nestjs/testing", "virtual:3fe8463d972f93f2a0f0ec109b9a2c74809af7d7109edffe78709d451968c4fd8f06ca685fb7c49d888699ef63e4b875ed83e7bf662db26cf4cfd48a44beb37e#npm:10.3.5"],\
+          ["@nestjs/testing", "virtual:3fe8463d972f93f2a0f0ec109b9a2c74809af7d7109edffe78709d451968c4fd8f06ca685fb7c49d888699ef63e4b875ed83e7bf662db26cf4cfd48a44beb37e#npm:10.3.7"],\
           ["@nestjs/typeorm", "virtual:3fe8463d972f93f2a0f0ec109b9a2c74809af7d7109edffe78709d451968c4fd8f06ca685fb7c49d888699ef63e4b875ed83e7bf662db26cf4cfd48a44beb37e#npm:10.0.2"],\
           ["@types/bcrypt", "npm:5.0.2"],\
           ["@types/express", "npm:4.17.21"],\
