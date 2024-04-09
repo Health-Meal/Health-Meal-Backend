@@ -1,7 +1,7 @@
-import { LoginUseCase } from '../../../src/application/domain/auth/usecase/login.usecase';
-import { UserPort } from '../../../src/application/domain/user/spi/user.spi';
-import { JwtPort } from '../../../src/application/domain/auth/spi/auth.spi';
-import { User } from '../../../src/application/domain/user/domain/user';
+import { LoginUseCase } from '../../../../src/application/domain/auth/usecase/login.usecase';
+import { UserPort } from '../../../../src/application/domain/user/spi/user.spi';
+import { JwtPort } from '../../../../src/application/domain/auth/spi/auth.spi';
+import { User } from '../../../../src/application/domain/user/domain/user';
 import { BadRequestException, NotFoundException, UnauthorizedException } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 
@@ -27,7 +27,6 @@ const tokenStub = {
     accessToken: 'testAccessToken',
     refreshToken: 'testRefreshToken'
 }
-
 
 describe('loginUseCase(유저가 로그인을 하는 경우)', () => {
     let loginUseCase: LoginUseCase;
@@ -66,27 +65,30 @@ describe('loginUseCase(유저가 로그인을 하는 경우)', () => {
         expect(mockUserPort.queryUserByEmail).toHaveBeenCalled();
     });
 
-    it('올바른 이메일, 유저의 loginType이 local, 비밀번호가 일치하지 않는다면', async () => {
-        jest.spyOn(mockUserPort, 'queryUserByEmail').mockResolvedValue(localUserStub);
-        jest.spyOn(bcrypt, 'compare').mockReturnValue(false as any);
+    describe ('올바른 이메일, 유저의 loginType이 local인 경우', () => {
 
-        await expect(loginUseCase.execute(loginRequestStub)).rejects.toThrowError(
-            new UnauthorizedException('Password Mismatch Exception')
-        );
+        it('비밀번호가 일치하지 않는다면', async () => {
+            jest.spyOn(mockUserPort, 'queryUserByEmail').mockResolvedValue(localUserStub);
+            jest.spyOn(bcrypt, 'compare').mockReturnValue(false as any);
 
-        expect(mockUserPort.queryUserByEmail).toHaveBeenCalled();
-        expect(bcrypt.compare).toHaveBeenCalledWith(loginRequestStub.password, localUserStub.password);
-    });
+            await expect(loginUseCase.execute(loginRequestStub)).rejects.toThrowError(
+                new UnauthorizedException('Password Mismatch Exception')
+            );
 
-    it('올바른 이메일, 유저의 loginType이 local, 비밀번호가 일치한다면', async () => {
-        jest.spyOn(mockUserPort, 'queryUserByEmail').mockResolvedValue(localUserStub)
-        jest.spyOn(bcrypt, 'compare').mockReturnValue(true as any)
-        jest.spyOn(mockJwtPort, 'receiveToken').mockResolvedValue(tokenStub)
+            expect(mockUserPort.queryUserByEmail).toHaveBeenCalled();
+            expect(bcrypt.compare).toHaveBeenCalledWith(loginRequestStub.password, localUserStub.password);
+        });
 
-        await expect(loginUseCase.execute(loginRequestStub)).resolves.not.toThrowError()
+        it('비밀번호가 일치한다면', async () => {
+            jest.spyOn(mockUserPort, 'queryUserByEmail').mockResolvedValue(localUserStub)
+            jest.spyOn(bcrypt, 'compare').mockReturnValue(true as any)
+            jest.spyOn(mockJwtPort, 'receiveToken').mockResolvedValue(tokenStub)
 
-        expect(mockUserPort.queryUserByEmail).toHaveBeenCalled();
-        expect(bcrypt.compare).toHaveBeenCalledWith(loginRequestStub.password, localUserStub.password);
-        expect(mockJwtPort.receiveToken).toHaveBeenCalled()
+            await expect(loginUseCase.execute(loginRequestStub)).resolves.not.toThrowError()
+
+            expect(mockUserPort.queryUserByEmail).toHaveBeenCalled();
+            expect(bcrypt.compare).toHaveBeenCalledWith(loginRequestStub.password, localUserStub.password);
+            expect(mockJwtPort.receiveToken).toHaveBeenCalled()
+        })
     })
 });

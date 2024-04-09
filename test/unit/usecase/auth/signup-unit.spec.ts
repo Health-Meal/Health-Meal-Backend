@@ -1,6 +1,6 @@
-import { SignUpUseCase } from '../../../src/application/domain/auth/usecase/signup.usecase';
-import { UserPort } from '../../../src/application/domain/user/spi/user.spi';
-import { User } from '../../../src/application/domain/user/domain/user';
+import { SignUpUseCase } from '../../../../src/application/domain/auth/usecase/signup.usecase';
+import { UserPort } from '../../../../src/application/domain/user/spi/user.spi';
+import { User } from '../../../../src/application/domain/user/domain/user';
 import { ConflictException } from '@nestjs/common';
 
 const userStub = new User(
