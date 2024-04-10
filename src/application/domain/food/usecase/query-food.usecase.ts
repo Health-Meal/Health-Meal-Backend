@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { FoodPort } from '../spi/food.spi';
 import { QueryFoodResponse } from '../dto/food.dto';
 
@@ -12,6 +12,10 @@ export class QueryFoodUseCase {
 
     async execute(keywordId: number): Promise<QueryFoodResponse> {
         const food = await this.foodPort.queryFoodByKeywordId(keywordId);
+
+        if (!food) {
+            throw new NotFoundException('Food Not Found')
+        }
 
         return {
             foodId: food.id,
