@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { CuisinePort } from '../spi/cuisine.spi';
 import { QueryCuisineResponse } from '../dto/cuisine.dto';
 
@@ -12,6 +12,10 @@ export class QueryCuisineUseCase {
 
     async execute(foodId: number): Promise<QueryCuisineResponse> {
         const cuisines = await this.cuisinePort.queryCuisineByFoodId(foodId);
+
+        if (!cuisines.length) {
+            throw new NotFoundException('Cuisine Not Found');
+        }
 
         return {
             cuisines: cuisines.map((cuisine) =>
