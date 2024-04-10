@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { KeywordPort } from '../spi/keyword.spi';
 import { KeywordResponse, QueryKeywordResponse } from '../dto/keyword.dto';
 
@@ -13,13 +13,15 @@ export class QueryKeywordUseCase {
     async execute(keyword: string): Promise<QueryKeywordResponse> {
         const keywords = await this.keywordPort.queryKeywordByString(keyword);
 
+        if (!keywords.length) {
+            throw new NotFoundException('Keyword Not Found');
+        }
+
         return {
-            keywords: keywords.map((keyword): KeywordResponse => {
-                return {
-                    keywordId: keyword.id,
-                    name: keyword.name
-                };
-            })
+            keywords: keywords.map((keyword): KeywordResponse => ({
+                keywordId: keyword.id,
+                name: keyword.name
+            }))
         };
     }
 }
