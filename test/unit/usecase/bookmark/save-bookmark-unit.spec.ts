@@ -33,7 +33,7 @@ describe('saveBookmarkUseCase(유저가 음식을 북마크하는 경우)', () =
         saveBookmarkUseCase = new SaveBookmarkUseCase(mockBookmarkPort);
     });
 
-    it('음식이 이미 북마크된 경우', async () => {
+    it('음식이 이미 북마크 되어있으면', async () => {
         jest.spyOn(mockBookmarkPort, 'queryBookmarkByUserIdAndFoodId').mockResolvedValue(bookmarkStub);
 
         await expect(saveBookmarkUseCase.execute(userStub, foodIdStub)).rejects.toThrowError(
@@ -43,7 +43,7 @@ describe('saveBookmarkUseCase(유저가 음식을 북마크하는 경우)', () =
         expect(mockBookmarkPort.queryBookmarkByUserIdAndFoodId).toHaveBeenCalled();
     });
 
-    it('음식이 아직 북마크되지 않은 경우', async () => {
+    it('음식이 아직 북마크 되어있지 않으면', async () => {
         jest.spyOn(mockBookmarkPort, 'queryBookmarkByUserIdAndFoodId').mockResolvedValue(null);
 
         await expect(saveBookmarkUseCase.execute(userStub, foodIdStub)).resolves.not.toThrowError();
