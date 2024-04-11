@@ -9,6 +9,8 @@ export interface BookmarkPort {
     queryBookmarkByUserIdAndFoodId(userId: number, foodId: number): Promise<Bookmark>;
 
     queryBookmarkByUserId(userId: number): Promise<BookMarkListResponse[]>;
+
+    queryBookmarkById(bookmarkId: number): Promise<Bookmark>;
 }
 
 export const BookmarkPort = Symbol('IBookmark');

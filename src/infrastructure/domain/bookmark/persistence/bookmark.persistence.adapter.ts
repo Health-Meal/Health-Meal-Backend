@@ -49,6 +49,12 @@ export class BookmarkPersistenceAdapter implements BookmarkPort {
             food: bookmarkEntity.food.name,
             description: bookmarkEntity.food.description,
             image: bookmarkEntity.food.image
-        }))
+        }));
+    }
+
+    async queryBookmarkById(bookmarkId: number): Promise<Bookmark> {
+        return await this.bookmarkMapper.toDomain(
+            await this.bookmarkRepository.findOneBy({ id: bookmarkId })
+        );
     }
 }

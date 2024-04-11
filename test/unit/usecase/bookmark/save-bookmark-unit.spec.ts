@@ -27,7 +27,8 @@ describe('saveBookmarkUseCase(유저가 음식을 북마크하는 경우)', () =
             queryBookmarkByUserIdAndFoodId: jest.fn(),
             saveBookmark: jest.fn(),
             deleteBookmark: jest.fn(),
-            queryBookmarkByUserId: jest.fn()
+            queryBookmarkByUserId: jest.fn(),
+            queryBookmarkById: jest.fn()
         };
         saveBookmarkUseCase = new SaveBookmarkUseCase(mockBookmarkPort);
     });
@@ -37,16 +38,16 @@ describe('saveBookmarkUseCase(유저가 음식을 북마크하는 경우)', () =
 
         await expect(saveBookmarkUseCase.execute(userStub, foodIdStub)).rejects.toThrowError(
             new ConflictException('Bookmark Already Exist')
-        )
+        );
 
-        expect(mockBookmarkPort.queryBookmarkByUserIdAndFoodId).toHaveBeenCalled()
+        expect(mockBookmarkPort.queryBookmarkByUserIdAndFoodId).toHaveBeenCalled();
     });
 
     it('음식이 아직 북마크되지 않은 경우', async () => {
-        jest.spyOn(mockBookmarkPort, 'queryBookmarkByUserIdAndFoodId').mockResolvedValue(null)
+        jest.spyOn(mockBookmarkPort, 'queryBookmarkByUserIdAndFoodId').mockResolvedValue(null);
 
-        await expect(saveBookmarkUseCase.execute(userStub, foodIdStub)).resolves.not.toThrowError()
+        await expect(saveBookmarkUseCase.execute(userStub, foodIdStub)).resolves.not.toThrowError();
 
-        expect(mockBookmarkPort.queryBookmarkByUserIdAndFoodId).toHaveBeenCalledWith(userStub.id, foodIdStub)
-    })
+        expect(mockBookmarkPort.queryBookmarkByUserIdAndFoodId).toHaveBeenCalledWith(userStub.id, foodIdStub);
+    });
 });
