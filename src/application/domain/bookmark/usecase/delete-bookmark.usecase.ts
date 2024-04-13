@@ -16,6 +16,6 @@ export class DeleteBookmarkUseCase {
             throw new NotFoundException('Bookmark Not Found');
         }
 
-        await this.bookmarkPort.deleteBookmark(bookmarkId);
+        await this.bookmarkPort.deleteBookmark(bookmark);
     }
 }

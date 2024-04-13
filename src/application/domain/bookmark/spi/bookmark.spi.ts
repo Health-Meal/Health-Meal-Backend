@@ -4,7 +4,7 @@ import { BookMarkListResponse } from '../dto/bookmark.dto';
 export interface BookmarkPort {
     saveBookmark(bookmark: Bookmark);
 
-    deleteBookmark(bookmarkId: number);
+    deleteBookmark(bookmark: Bookmark);
 
     queryBookmarkByUserIdAndFoodId(userId: number, foodId: number): Promise<Bookmark>;
 

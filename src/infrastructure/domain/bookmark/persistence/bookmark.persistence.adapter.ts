@@ -22,8 +22,10 @@ export class BookmarkPersistenceAdapter implements BookmarkPort {
         );
     }
 
-    async deleteBookmark(bookmarkId: number) {
-        await this.bookmarkRepository.delete({ id: bookmarkId });
+    async deleteBookmark(bookmark: Bookmark) {
+        await this.bookmarkRepository.remove(
+            await this.bookmarkMapper.toEntity(bookmark)
+        );
     }
 
     async queryBookmarkByUserIdAndFoodId(userId: number, foodId: number): Promise<Bookmark> {
