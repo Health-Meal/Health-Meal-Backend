@@ -1,4 +1,4 @@
-import { Controller, Delete, Get, Param, ParseIntPipe, Post, UseGuards } from '@nestjs/common';
+import { Controller, Delete, Get, HttpCode, Param, ParseIntPipe, Post, UseGuards } from '@nestjs/common';
 import { SaveBookmarkUseCase } from '../../../../application/domain/bookmark/usecase/save-bookmark.usecase';
 import { CurrentUser } from '../../../global/decorator/current-user';
 import { UserEntity } from '../../user/persistence/user.entity';
@@ -23,6 +23,7 @@ export class BookmarkWebAdapter {
     }
 
     @UseGuards(AuthGuard())
+    @HttpCode(204)
     @Delete('delete/:id')
     async deleteBookmark(@Param('id', ParseIntPipe) bookmarkId: number): Promise<void> {
         return this.deleteBookmarkUseCase.execute(bookmarkId);
@@ -30,7 +31,7 @@ export class BookmarkWebAdapter {
 
     @UseGuards(AuthGuard())
     @Get()
-    async queryBookmarks (@CurrentUser() user: UserEntity): Promise<QueryBookmarkListResponse> {
-        return this.queryBookmarksUseCase.execute(user)
+    async queryBookmarks(@CurrentUser() user: UserEntity): Promise<QueryBookmarkListResponse> {
+        return this.queryBookmarksUseCase.execute(user);
     }
 }
